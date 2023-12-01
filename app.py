@@ -4,6 +4,7 @@ import pandas as pd
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
+import numpy as np
 
 
 app=Flask(__name__)
