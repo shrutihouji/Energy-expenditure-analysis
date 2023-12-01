@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healthcare Analytics</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #051e38;
+            
+        }
+        
+
+        h3 {
+            color: #007bff;
+        }
+
+        h5 {
+            color: #6c757d;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: whitesmoke;
+        }
+
+        select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .plot-container {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .plot {
+            width: 95%;
+            background-color: #fff;
+            padding: 40px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+        }
+        h1 {
+            font-size: 36px;
+            color: #cbc4bf;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Global Healthcare Expenditure Analysis</h1>
+    <h3>Which are the top 10 countries that exhibit the highest healthcare expenditure in a given year?</h3>
+    <form action="/" method="post">
+        <label for="year">Select a Year:</label>
+        <select name="year" id="year">
+            <option value="2000">2000</option>
+            <option value="2001">2001</option>
+            <option value="2002">2002</option>
+            <option value="2003">2003</option>
+            <option value="2004">2004</option>
+            <option value="2005">2005</option>
+            <option value="2006">2006</option>
+            <option value="2007">2007</option>
+            <option value="2008">2008</option>
+            <option value="2009">2009</option>
+            <option value="2010">2010</option>
+            <option value="2011">2011</option>
+            <option value="2012">2012</option>
+            <option value="2013">2013</option>
+            <option value="2014">2014</option>
+            <option value="2015">2015</option>
+            <option value="2016">2016</option>
+            <option value="2017">2017</option>
+            <option value="2018">2018</option>
+            <option value="2019">2019</option>
+            <option value="2020">2020</option>
+        </select>
+        <br>
+        <button type="submit">Generate Plot</button>
+    </form>
+    <div>
+    {% if plot %}
+        <div>
+            {{ plot|safe }}
+        </div>
+    {% endif %}
+    <h3>What is the relationship between population and current healthcare expenditure per capita for the USA over the observed years?</h3>>
+    <div>
+        <div >
+            {{ plot_bar |safe }}
+        </div>
+    <h3>How does health expenditure vary across income groups within different regions, and what changes have occurred from 2010 to 2020?</h3>
+    <div class="plot-container">
+        <div >
+            {{ plot1 |safe }}
+        </div>
+        <div >
+            {{ plot2 |safe }}
+        </div>
+    </div>
+
+<div>
+    <h3>What is the healthcare expenditure distribution for different categories of financing schemes in different countries of the world?</h3>
+    <div class="plot">
+        {{ plot3 |safe }}
+    </div>
+    <h3>What is the health expenditure by revenues of health care financing schemes per capita over time by country?</h3>
+    <div class="plot">
+        {{ plot4 |safe }}
+    </div>
+    <h3>How have health spending trends changed over the years in different parts of the world?</h3>
+    <div class="plot-container">
+        <div>
+            {{ plot5 |safe }}
+        </div>
+        <div>
+            {{ plot5_2 |safe }}
+        </div>
+    </div>
+    <h3>What percent of the total current healthcare expenditure does the government and the private sources contribute in the year 2020 for all the countries? </h3>
+    <div class="plot">
+        {{ plot6 |safe }}
+    </div>
+    <h3>How much government spends on schemes based on Income level per capita?</h3>
+    <div class="plot">
+        {{ plot7 |safe }}
+    </div>
+</div>
+</body>
+</html>
+
