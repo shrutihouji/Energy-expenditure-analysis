@@ -5,7 +5,7 @@ import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 import numpy as np
-from werkzeug.urls import url_quote
+from werkzeug.utils import url_quote
 
 
 app=Flask(__name__)
