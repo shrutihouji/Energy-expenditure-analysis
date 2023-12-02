@@ -6,6 +6,7 @@ import plotly.express as px
 import plotly.graph_objects as go
 import numpy as np
 from werkzeug.utils import url_quote
+from urllib.parse import quote
 
 
 app=Flask(__name__)
