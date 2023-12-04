@@ -1,13 +1,11 @@
 from flask import Flask, render_template,request,redirect
 import plotly.express as px
 import pandas as pd
+import numpy as np
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
-import numpy as np
-from werkzeug.utils import url_quote
-from urllib.parse import quote
-
+import plotly.subplots as sp
 
 app=Flask(__name__)
 
@@ -58,7 +56,6 @@ def time_series_plot():
     plot_html_n=fig_n.to_html(full_html=False)
     
     
-
     #sunburst chart
     health_data = pd.DataFrame(df) 
     df_2010 = health_data[health_data['year'] == 2010]
@@ -114,31 +111,6 @@ def time_series_plot():
                     )
     fig3.update_traces(textinfo='label+value+percent entry')  
     plot_html2=fig3.to_html(full_html=False)
-
-
-    #plot 4 
-    fig4 = px.choropleth(df, locations="country", locationmode='country names',
-                   color="fs_usd",
-                   animation_frame="year",
-                   color_continuous_scale=px.colors.sequential.Viridis)
-
-    fig4.update_layout(
-        title_text='Healthcare Revenue and Financing Over Time by Country',
-        geo=dict(
-            showframe=False
-        )
-    )
-
-    slider = dict(
-        steps = [dict(method="animate",
-                    args = [[{"frame": {"duration": 300, "redraw": True},
-                                "mode": "immediate",}
-                            ],
-                            ],
-                    )
-                ])
-    fig4.update_layout(sliders=[slider])
-    plot_html3=fig4.to_html(full_html=False)
 
     #time series plot
     health_df = pd.DataFrame(df)
@@ -210,7 +182,7 @@ def time_series_plot():
     fig7.update_traces(marker=dict(line=dict(width=0)))
     plot_html6=fig7.to_html(full_html=False)
 
-    return render_template('index2.html',plot=plot_area,plot_bar=plot_html_n,plot1=plot_html,plot2=plot_html1,plot3=plot_html2,plot4=plot_html3,plot5=plot_html4,  plot5_2=plot_html4_2, plot6=plot_html5, plot7=plot_html6)
+    return render_template('index2.html',plot=plot_area,plot_bar=plot_html_n,plot1=plot_html,plot2=plot_html1,plot3=plot_html2,plot5=plot_html4,  plot5_2=plot_html4_2, plot6=plot_html5, plot7=plot_html6)
 
 
 if __name__ == '__main__':
