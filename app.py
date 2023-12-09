@@ -205,7 +205,7 @@ def time_series_plot():
         )
     )
 
-    fig.update_traces(marker=dict(line=dict(width=0)))
+    fig7.update_traces(marker=dict(line=dict(width=0)))
     plot_html6=fig7.to_html(full_html=False)
 
     #spider chart
@@ -245,7 +245,7 @@ def time_series_plot():
            go.Scatterpolar(r=yearwise_oops_che, theta=[str(year) for year in years_op], name=' out-of-pocket expenses', line=dict(color='green'))
         ],
         layout=go.Layout(
-            title=go.layout.Title(text='Out of pocket expenses'),
+            title=go.layout.Title(text='Out of pocket expenses in USD'),
             polar={'radialaxis': {'visible': True}},
             showlegend=True
         )
