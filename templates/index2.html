@@ -12,8 +12,6 @@
             background-color: #051e38;
             
         }
-        
-
         h3 {
             color: #007bff;
         }
@@ -116,6 +114,10 @@
         <div >
             {{ plot_bar |safe }}
         </div>
+        <h3>What percent of the total current healthcare expenditure does the government and the private sources contribute in the year 2020 for all the countries? </h3>
+        <div class="plot">
+            {{ plot6 |safe }}
+        </div>
     <h3>How does health expenditure vary across income groups within different regions, and what changes have occurred from 2010 to 2020?</h3>
     <div class="plot-container">
         <div >
@@ -125,16 +127,6 @@
             {{ plot2 |safe }}
         </div>
     </div>
-
-<div>
-    <h3>What is the healthcare expenditure distribution for different categories of financing schemes in different countries of the world?</h3>
-    <div class="plot">
-        {{ plot3 |safe }}
-    </div>
-    <!--h3>What is the health expenditure by revenues of health care financing schemes per capita over time by country?</h3>
-    <div class="plot">
-        {{ plot4 |safe }}
-    </div-->
     <h3>How have health spending trends changed over the years in different parts of the world?</h3>
     <div class="plot-container">
         <div>
@@ -144,13 +136,11 @@
             {{ plot5_2 |safe }}
         </div>
     </div>
-    <h3>What percent of the total current healthcare expenditure does the government and the private sources contribute in the year 2020 for all the countries? </h3>
+
+<div>
+    <h3>What is the healthcare expenditure distribution for different categories of financing schemes in different countries of the world?</h3>
     <div class="plot">
-        {{ plot6 |safe }}
-    </div>
-    <h3>How much government spends on schemes based on Income level per capita?</h3>
-    <div class="plot">
-        {{ plot7 |safe }}
+        {{ plot3 |safe }}
     </div>
     <h3>How has the evolving relationship between purchasing power parity, exchange rates, and out-of-pocket expenses worldwide since the year 2000 impacted global economic dynamics?</h3>
 
@@ -161,6 +151,10 @@
         <div>
             {{ plot9 |safe }}
         </div>
+    </div>
+    <h3>How much government spends on schemes based on Income level per capita?</h3>
+    <div class="plot">
+        {{ plot7 |safe }}
     </div>
 </div>
 </div>
