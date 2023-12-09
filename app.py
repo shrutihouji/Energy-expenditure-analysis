@@ -11,11 +11,32 @@ app=Flask(__name__)
 
 df=pd.read_csv('filtered_data.csv')
 
+def get_yearwise_value_pp(df):
+  years = df.year.unique()
+  yearwise_sum = []
+  for year in years:
+    yearwise_sum.append(df.loc[df['year'] == year, 'purchasing power parity'].sum())
+  return years, yearwise_sum
+
+def get_yearwise_value_er(df):
+  years = df.year.unique()
+  yearwise_sum = []
+  for year in years:
+    yearwise_sum.append(df.loc[df['year'] == year, 'exchange rates'].sum())
+  return years, yearwise_sum
+
+def get_yearwise_value_op(df):
+  years = df.year.unique()
+  yearwise_sum = []
+  for year in years:
+    yearwise_sum.append(df.loc[df['year'] == year, 'out-of-pocket expenses'].sum())
+  return years, yearwise_sum
+
 @app.route('/',methods=['GET','POST'])
 def time_series_plot():
 
     plot_area = None
-    #area plot
+    #line plot
     df.rename(columns={'che_pc_usd':'current healthcare expenditure(USD)'},inplace=True)
     df['current healthcare expenditure(USD)'].isnull().sum()
     df_che=df[['country','year','income','current healthcare expenditure(USD)']].copy()
@@ -27,7 +48,7 @@ def time_series_plot():
         df_selected = df_che[df_che['year'] == int(selected_year)]
 
         df_selected_top10 = df_selected.nlargest(10, 'current healthcare expenditure(USD)')
-        fig_bar = px.area(df_selected_top10, x='country', y='current healthcare expenditure(USD)', title='Top 10 countries with current healthcare expenditure per capita(in USD)'
+        fig_bar = px.line(df_selected_top10, x='country', y='current healthcare expenditure(USD)', title='Top 10 countries with current healthcare expenditure per capita(in USD)'
                  )
         fig_bar.update_layout(
             xaxis=dict(tickangle=45),
@@ -170,8 +191,12 @@ def time_series_plot():
                      hover_name='country',  
                      hover_data=['Govn_schemes_USD_PC'],  
                      title='Government Spending on Schemes in USD Per Capita by Country and Income Group',
-                     projection='natural earth', 
+                     projection='natural earth',
+                     animation_frame='year',  # creates a slider based on the 'year' column
+                     size_max=30,
                      color_discrete_sequence=px.colors.qualitative.Plotly) 
+    #setting minimum size 
+    fig7.update_traces(marker=dict(sizemin=3))
 
     fig7.update_layout(
         geo=dict(
@@ -179,10 +204,55 @@ def time_series_plot():
             showcoastlines=False,
         )
     )
-    fig7.update_traces(marker=dict(line=dict(width=0)))
+
+    fig.update_traces(marker=dict(line=dict(width=0)))
     plot_html6=fig7.to_html(full_html=False)
 
-    return render_template('index2.html',plot=plot_area,plot_bar=plot_html_n,plot1=plot_html,plot2=plot_html1,plot3=plot_html2,plot5=plot_html4,  plot5_2=plot_html4_2, plot6=plot_html5, plot7=plot_html6)
+    #spider chart
+    spider_data = ['year', 'ppp', 'xrt', 'oops_che', 'region']
+    data_spider_chart = df[spider_data]
+    #renaming for income level per capita
+    data_spider_chart.rename(columns={'ppp':'purchasing power parity'},inplace=True)
+    #renaming for  highest healthcare expenditure
+    data_spider_chart.rename(columns={'xrt':'exchange rates'},inplace=True)
+    #renaming for total current healthcare expenditure
+    data_spider_chart.rename(columns={'oops_che':'out-of-pocket expenses'},inplace=True)
+
+    years_pp, yearwise_ppp = get_yearwise_value_pp(data_spider_chart)
+    years_er, yearwise_xrt = get_yearwise_value_er(data_spider_chart)
+    years_op, yearwise_oops_che = get_yearwise_value_op(data_spider_chart)
+
+    years_pp = [*years_pp, years_pp[0]]
+    yearwise_ppp = [*yearwise_ppp, yearwise_ppp[0]]
+    yearwise_xrt = [*yearwise_xrt, yearwise_xrt[0]]
+
+    fig8 = go.Figure(
+        data=[
+            go.Scatterpolar(r=yearwise_ppp, theta=[str(year) for year in years_pp], name='purchasing power parity'),
+            go.Scatterpolar(r=yearwise_xrt, theta=[str(year) for year in years_er], name='exchange rates'),
+        ],
+        layout=go.Layout(
+            title=go.layout.Title(text='Purchasing Power Parity and Exchange Rate'),
+            polar={'radialaxis': {'visible': True}},
+            showlegend=True
+        )
+    )
+    plot_html7=fig8.to_html(full_html=False)
+
+    yearwise_oops_che = [*yearwise_oops_che, yearwise_oops_che[0]]
+    fig9 = go.Figure(
+        data=[
+           go.Scatterpolar(r=yearwise_oops_che, theta=[str(year) for year in years_op], name=' out-of-pocket expenses', line=dict(color='green'))
+        ],
+        layout=go.Layout(
+            title=go.layout.Title(text='Out of pocket expenses'),
+            polar={'radialaxis': {'visible': True}},
+            showlegend=True
+        )
+    )
+    plot_html8=fig9.to_html(full_html=False)
+
+    return render_template('index2.html',plot=plot_area,plot_bar=plot_html_n,plot1=plot_html,plot2=plot_html1,plot3=plot_html2,plot5=plot_html4,  plot5_2=plot_html4_2, plot6=plot_html5, plot7=plot_html6, plot8=plot_html7, plot9=plot_html8)
 
 
 if __name__ == '__main__':
