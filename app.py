@@ -76,27 +76,40 @@ def time_series_plot():
              color_discrete_map={'Population': '#003366', 'current healthcare expenditure(USD)': '#FFA500'})
     plot_html_n=fig_n.to_html(full_html=False)
     
-    
     #sunburst chart
-    health_data = pd.DataFrame(df) 
-    df_2010 = health_data[health_data['year'] == 2010]
-    fig = px.sunburst(df_2010, path=['region', 'income'], values='che_gdp',
-                  color='region',  
-                  title='Health Expenditure as % Gross Domestic Product across Income Groups')
+    region_mapping = {
+    'AFR': 'Africa',
+    'AMR': 'America',
+    'EUR': 'Europe',
+    'EMR': 'Eastern Mediterranean',
+    'WPR': 'Western Pacific',
+    'SEAR': 'South-East Asia'
+}
+    region_colors = {
+    'Africa': '#EC7063',   
+    'America': '#AF7AC5',  
+    'Eastern Mediterranean': '#48C9B0',  
+    'Europe': '#7FB3D5',   
+    'South-East Asia': '#F9E79F',  
+    'Western Pacific': '#F5B7B1'   
+}
+    df['region'] = df['region'].replace(region_mapping)
+    # Filter data for the year 2010
+    df_10 = df[df['year'] == 2010]
 
-    fig.update_layout(legend_title_text='Region',height=600, width=700)
+    fig = px.sunburst(df_10, path=['region','income','country'], values='che_gdp',color='region',color_discrete_map=region_colors,
+                    title='2010 Health Expenditure as % of GDP Across Income Groups')
+
+
     plot_html=fig.to_html(full_html=False)
+    # Filter data for the year 2020
+    df_20 = df[df['year'] == 2020]
+
+    fig1 = px.sunburst(df_20, path=['region','income','country'], values='che_gdp',color='region',color_discrete_map=region_colors,
+                    title='2020 Health Expenditure as % of GDP Across Income Groups')
 
 
-    #sunburst chart
-    df_2020 = health_data[health_data['year'] == 2020]
-    fig1 = px.sunburst(df_2020, path=['region', 'income'], values='che_gdp',
-                  color='region',  
-                  title='Health Expenditure as % Gross Domestic Product across Income Groups')
-
-    fig1.update_layout(legend_title_text='Region',height=600, width=700)
     plot_html1=fig1.to_html(full_html=False)
-
 
     #Tree map
     selected_columns = ['country', 'hf_usd', 'hf1_usd', 'hf11_usd', 'hf2_usd', 'hf21_usd', 'hf22_usd', 'hf3_usd']
@@ -180,7 +193,7 @@ def time_series_plot():
     plot_html5=fig6.to_html(full_html=False)
 
 
-    #plot 7
+    #plot 7- dot map plot
     df.rename(columns={'hf11_usd_pc':'Govn_schemes_USD_PC'},inplace=True)
     usd=df[['country','year','code','income','Govn_schemes_USD_PC']]
     usd=usd.round(2)
@@ -204,7 +217,6 @@ def time_series_plot():
             showcoastlines=False,
         )
     )
-
     fig7.update_traces(marker=dict(line=dict(width=0)))
     plot_html6=fig7.to_html(full_html=False)
 
@@ -232,27 +244,14 @@ def time_series_plot():
             go.Scatterpolar(r=yearwise_xrt, theta=[str(year) for year in years_er], name='exchange rates'),
         ],
         layout=go.Layout(
-            title=go.layout.Title(text='Purchasing Power Parity and Exchange Rate'),
+            title=go.layout.Title(text='Purchasing Power Parity and Exchange Rate (NCU per US$)'),
             polar={'radialaxis': {'visible': True}},
             showlegend=True
         )
     )
     plot_html7=fig8.to_html(full_html=False)
 
-    yearwise_oops_che = [*yearwise_oops_che, yearwise_oops_che[0]]
-    fig9 = go.Figure(
-        data=[
-           go.Scatterpolar(r=yearwise_oops_che, theta=[str(year) for year in years_op], name=' out-of-pocket expenses', line=dict(color='green'))
-        ],
-        layout=go.Layout(
-            title=go.layout.Title(text='Out of pocket expenses in USD'),
-            polar={'radialaxis': {'visible': True}},
-            showlegend=True
-        )
-    )
-    plot_html8=fig9.to_html(full_html=False)
-
-    return render_template('index2.html',plot=plot_area,plot_bar=plot_html_n,plot1=plot_html,plot2=plot_html1,plot3=plot_html2,plot5=plot_html4,  plot5_2=plot_html4_2, plot6=plot_html5, plot7=plot_html6, plot8=plot_html7, plot9=plot_html8)
+    return render_template('index2.html',plot=plot_area,plot_bar=plot_html_n,plot1=plot_html,plot2=plot_html1,plot3=plot_html2,plot5=plot_html4,  plot5_2=plot_html4_2, plot6=plot_html5, plot7=plot_html6, plot8=plot_html7)
 
 
 if __name__ == '__main__':
