@@ -14,19 +14,39 @@ Based on the research questions, I have implemented few data visualizations: <br
 Research question 1 : Which are the top 10 countries from the dropdown that exhibit the highest
 healthcare expenditure in a selected year? <br>
 
-Line Plot Insights : <br>
-For the selected year 2020:
-● The top 10 countries with the highest current healthcare expenditure per capita in 2020 are: United States, Switzerland, Luxembourg, Iceland, Canada, Belgium, UK, Republic of Korea, Portugal, Qatar <br>
-● The country with the highest current healthcare expenditure per capita in 2020 is the United States with an expenditure of $11.70241K <br>
-● The country with the lowest current healthcare expenditure per capita in 2020 is Qatar with an expenditure of $2188. <br> <br>
+Line Plot : <br>
+
 
 Research question 2 : How has current healthcare expenditure per capita changed in the United States compared to population growth? <br>
-Bar Plot Insights : <br>
-● It shows that with the increasing population in the US, the current healthcare expenditure
-increases too from $4532 to $11.07K. <br>
-● There is a positive relationship between population and healthcare spending. <br> <br>
+Bar Plot <br>
 
-Research question 3 :
+
+Research question 3 : What percent of the total current healthcare expenditure does the government and private sources contribute in the year 2020 for all the countries? <br>
+Bubble Chart <br>
+
+Research question 4 : How much does the government spend on schemes based on Income level per capita? <br>
+
+Dot Visualization on Map <br>
+
+
+Research question 5 : How have health spending trends changed over the years in different parts of the world? <br>
+
+Line Graph and HeatMap <br>
+
+Research question 6 : How does health expenditure vary across income groups within different regions, and what changes have occurred from 2010 to 2020? <br>
+
+SunBurst Charts <br>
+
+Research question 7 : How has the evolving relationship between purchasing power parity and exchange rates expenses worldwide since the year 2000 impacted global economic dynamics? <br>
+
+Spider Chart <br>
+
+Research question 8 : How does the hierarchy and proportion of healthcare financing sources vary across different countries? <br>
+
+TreeMap <br>
+
+
+
 
 
 
