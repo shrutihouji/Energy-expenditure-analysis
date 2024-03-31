@@ -22,11 +22,11 @@ healthcare expenditure in a selected year? <br>
 
 
 <b>Research question 3 :</b> What percent of the total current healthcare expenditure does the government and private sources contribute in the year 2020 for all the countries? <br>
-Bubble Chart <br>
+<b>Bubble Chart </b><br>
 
 <b>Research question 4 : </b>How much does the government spend on schemes based on Income level per capita? <br>
 
-<b>Dot Visualization on Map <b><br>
+<b>Dot Visualization on Map </b><br>
 
 
 <b>Research question 5 : </b>How have health spending trends changed over the years in different parts of the world? <br>
