@@ -14,7 +14,7 @@ Based on the research questions, I have implemented few data visualizations: <br
 Research question 1 : Which are the top 10 countries from the dropdown that exhibit the highest
 healthcare expenditure in a selected year? <br>
 
-Line Plot : <br>
+<b>Line Plot : </b><br>
 
 
 Research question 2 : How has current healthcare expenditure per capita changed in the United States compared to population growth? <br>
