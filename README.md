@@ -9,6 +9,17 @@ This project is critically important and intriguing due to its focus on addressi
 Enhance the user's understanding of global healthcare financing sources, trends, disparities, and patterns, providing insights into top-performing countries, financing structures, and economic influences. <br>
 To derive valuable insights into how different countries, regions, and income groups allocate resources to healthcare, the relationship between economic development and sources of funding, and ultimately contribute to informed decision-making in the healthcare domain. <br> <br> <br>
 
+<b>Tech Stack</b>
+•Programming language & software: Python 3.9, Jupyter Notebook <br>
+•Framework: Flask <br>
+•Libraries- Plotly, Numpy, pandas <br>
+•Frontend: HTML, CSS <br>
+•Deployed on: Render <br>
+•Web app link: https://health-expenditure-analysis.onrender.com
+
+
+
+
 Based on the research questions, I have implemented few data visualizations: <br>
 
 <b>Research question 1 :  </b>Which are the top 10 countries from the dropdown that exhibit the highest
