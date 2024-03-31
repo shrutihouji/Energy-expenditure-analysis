@@ -11,39 +11,39 @@ To derive valuable insights into how different countries, regions, and income gr
 
 Based on the research questions, I have implemented few data visualizations: <br>
 
-<strong>Research question 1 :  </strong>Which are the top 10 countries from the dropdown that exhibit the highest
+<b>Research question 1 :  </b>Which are the top 10 countries from the dropdown that exhibit the highest
 healthcare expenditure in a selected year? <br>
 
 <b>Line Plot </b><br>
 
 
-Research question 2 : How has current healthcare expenditure per capita changed in the United States compared to population growth? <br>
-Bar Plot <br>
+<b>Research question 2 : </b>How has current healthcare expenditure per capita changed in the United States compared to population growth? <br>
+<b>Bar Plot</b> <br>
 
 
-Research question 3 : What percent of the total current healthcare expenditure does the government and private sources contribute in the year 2020 for all the countries? <br>
+<b>Research question 3 :</b> What percent of the total current healthcare expenditure does the government and private sources contribute in the year 2020 for all the countries? <br>
 Bubble Chart <br>
 
-Research question 4 : How much does the government spend on schemes based on Income level per capita? <br>
+<b>Research question 4 : </b>How much does the government spend on schemes based on Income level per capita? <br>
 
-Dot Visualization on Map <br>
+<b>Dot Visualization on Map <b><br>
 
 
-Research question 5 : How have health spending trends changed over the years in different parts of the world? <br>
+<b>Research question 5 : </b>How have health spending trends changed over the years in different parts of the world? <br>
 
-Line Graph and HeatMap <br>
+<b>Line Graph and HeatMap </b><br>
 
-Research question 6 : How does health expenditure vary across income groups within different regions, and what changes have occurred from 2010 to 2020? <br>
+<b>Research question 6 : </b>How does health expenditure vary across income groups within different regions, and what changes have occurred from 2010 to 2020? <br>
 
-SunBurst Charts <br>
+<b>SunBurst Charts </b><br>
 
-Research question 7 : How has the evolving relationship between purchasing power parity and exchange rates expenses worldwide since the year 2000 impacted global economic dynamics? <br>
+<b>Research question 7 :</b> How has the evolving relationship between purchasing power parity and exchange rates expenses worldwide since the year 2000 impacted global economic dynamics? <br>
 
-Spider Chart <br>
+<b>Spider Chart </b><br>
 
-Research question 8 : How does the hierarchy and proportion of healthcare financing sources vary across different countries? <br>
+<b>Research question 8 :</b> How does the hierarchy and proportion of healthcare financing sources vary across different countries? <br>
 
-TreeMap <br>
+<b>TreeMap </b><br>
 
 
 
