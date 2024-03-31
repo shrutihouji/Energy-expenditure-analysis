@@ -9,7 +9,7 @@ This project is critically important and intriguing due to its focus on addressi
 Enhance the user's understanding of global healthcare financing sources, trends, disparities, and patterns, providing insights into top-performing countries, financing structures, and economic influences. <br>
 To derive valuable insights into how different countries, regions, and income groups allocate resources to healthcare, the relationship between economic development and sources of funding, and ultimately contribute to informed decision-making in the healthcare domain. <br> <br> <br>
 
-<b>Tech Stack</b>
+<b>Tech Stack</b> <br>
 •Programming language & software: Python 3.9, Jupyter Notebook <br>
 •Framework: Flask <br>
 •Libraries- Plotly, Numpy, pandas <br>
